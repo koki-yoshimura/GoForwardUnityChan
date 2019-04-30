@@ -18,6 +18,8 @@ public class CubeController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        
+
         // キューブを移動させる
         transform.Translate(this.speed, 0, 0);
 
@@ -26,5 +28,14 @@ public class CubeController : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.tag == "block" || other.gameObject.tag == "ground")
+        {
+            GetComponent<AudioSource>().Play();
+        }
+        
     }
 }
